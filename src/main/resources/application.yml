@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    include:
+      - db
+  jpa:
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernates:
+          show_sql: true # sysout
+          format_sql: true
+
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace # show query parameter
