@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form th:action="@{/api/v1/items/edit}" th:object="${form}" method="post">
+    <form th:action="@{/items/edit}" th:object="${form}" method="post">
         <!-- id -->
         <input type="hidden" th:field="*{id}" />
         <div class="form-group">

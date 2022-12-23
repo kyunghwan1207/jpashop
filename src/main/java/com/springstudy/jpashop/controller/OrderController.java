@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/orders")
+@RequestMapping("/orders")
 @Slf4j
 public class OrderController {
     private final OrderService orderService;
@@ -51,11 +51,11 @@ public class OrderController {
                         @RequestParam("itemId") Long itemId,
                         @RequestParam("count") int count){
         orderService.order(memberId, itemId, count); // 어떤 고객이 어떤 상품을 몇개 주문한다
-        return "redirect:/api/v1/home";
+        return "redirect:/home";
     }
     @PostMapping("/{orderId}/cancel")
     public String cancel(@PathVariable("orderId") Long orderId){
         orderService.cancelOrder(orderId);
-        return "redirect:/api/v1/orders";
+        return "redirect:/orders";
     }
 }

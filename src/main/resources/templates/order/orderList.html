@@ -61,7 +61,7 @@
     function cancel(id) {
         var form = document.createElement("form");
         form.setAttribute("method", "post");
-        form.setAttribute("action", "/api/v1/orders/" + id + "/cancel");
+        form.setAttribute("action", "/orders/" + id + "/cancel");
         document.body.appendChild(form);
         form.submit();
     }

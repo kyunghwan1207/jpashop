@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/items")
+@RequestMapping("/items")
 public class ItemController {
     private final ItemService itemService;
     @GetMapping
@@ -35,7 +35,7 @@ public class ItemController {
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
         itemService.saveItem(book);
-        return "redirect:/api/v1/items";
+        return "redirect:/items";
     }
     @GetMapping("/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long id, Model model){
@@ -66,6 +66,6 @@ public class ItemController {
         itemService.updateItem(id, form.getName(), form.getPrice(), form.getAuthor(), form.getStockQuantity(), form.getIsbn());
 
 
-        return "redirect:/api/v1/items";
+        return "redirect:/items";
     }
 }

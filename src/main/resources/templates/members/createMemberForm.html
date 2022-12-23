@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form role="form" action="/api/v1/members/new" th:object="${memberForm}"
+    <form role="form" action="/members/new" th:object="${memberForm}"
           method="post">
         <div class="form-group">
             <label th:for="name">이름</label>
