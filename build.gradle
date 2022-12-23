@@ -30,6 +30,8 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// 쿼리로그
+	implementation group: 'p6spy', name: 'p6spy', version: '3.9.1'
 
 }
 

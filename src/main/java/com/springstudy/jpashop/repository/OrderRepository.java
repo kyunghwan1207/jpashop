@@ -23,14 +23,34 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-    public List<Order> findAll(OrderSearch orderSearch){
-        return em.createQuery("select o from Order o join o.member m"
-                                + " where o.orderStatus = :status" + " and m.name like :name"
-                        , Order.class)
-                .setParameter("status", orderSearch.getOrderStatus())
-                .setParameter("name", orderSearch.getMemberName())
-                .getResultList();
+    public List<Order> findAllByString(OrderSearch orderSearch){
+        List<Order> orders;
+        if (orderSearch.getMemberName() == null || orderSearch.getMemberName().length() == 0){
+            orders = em.createQuery("select o from Order o"
+                                    + " where o.orderStatus = :status"
+                            , Order.class)
+                    .setParameter("status", orderSearch.getOrderStatus())
+                    .getResultList();
+        } else if (orderSearch.getOrderStatus() == null){
+            orders = em.createQuery("select o from Order o join o.member m"
+                                    + " where m.name like :name"
+                            , Order.class)
+                    .setParameter("name", orderSearch.getMemberName())
+                    .getResultList();
+        } else {
+            orders = em.createQuery("select o from Order o join o.member m"
+                                    + " where o.orderStatus = :status" + " and m.name like :name"
+                            , Order.class)
+                    .setParameter("status", orderSearch.getOrderStatus())
+                    .setParameter("name", orderSearch.getMemberName())
+                    .getResultList();
+        }
+        return orders;
     }
 
 
+    public List<Order> findAll() {
+        return em.createQuery("select o from Order o join o.member m", Order.class)
+                .getResultList();
+    }
 }

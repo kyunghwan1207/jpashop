@@ -30,7 +30,7 @@ public class MemberService {
     /**
      * 회원 목록 조회
      */
-    public List<Member> findMembes(){
+    public List<Member> findMembers(){
         return memberRepository.findAll();
     }
     public Member finOne(Long id){

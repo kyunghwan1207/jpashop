@@ -8,9 +8,12 @@ import com.springstudy.jpashop.domain.item.Item;
 import com.springstudy.jpashop.repository.ItemRepository;
 import com.springstudy.jpashop.repository.MemberRepository;
 import com.springstudy.jpashop.repository.OrderRepository;
+import com.springstudy.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -50,5 +53,12 @@ public class OrderService {
         Order findOrder = orderRepository.findOne(orderId);
         // 주문 취소
         findOrder.cancel();
+    }
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
+    }
+
+    public List<Order> findAll() {
+        return orderRepository.findAll();
     }
 }
