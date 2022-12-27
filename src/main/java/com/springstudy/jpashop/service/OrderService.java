@@ -4,11 +4,13 @@ import com.springstudy.jpashop.domain.Delivery;
 import com.springstudy.jpashop.domain.Member;
 import com.springstudy.jpashop.domain.Order;
 import com.springstudy.jpashop.domain.OrderItem;
+import com.springstudy.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
 import com.springstudy.jpashop.domain.item.Item;
 import com.springstudy.jpashop.repository.ItemRepository;
 import com.springstudy.jpashop.repository.MemberRepository;
 import com.springstudy.jpashop.repository.OrderRepository;
 import com.springstudy.jpashop.repository.OrderSearch;
+import com.springstudy.jpashop.repository.order.simplequery.OrderSimpleQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
     /**
      * 주문
      */
@@ -60,5 +63,12 @@ public class OrderService {
 
     public List<Order> findAll() {
         return orderRepository.findAll();
+    }
+    public List<Order> findAllWithMemberDelivery() {
+        return orderRepository.findAllWithMemberDelivery();
+    }
+
+    public List<OrderSimpleQueryDto> finOrderDtos() {
+        return orderSimpleQueryRepository.findOrderDtos();
     }
 }

@@ -27,7 +27,7 @@ public class OrderController {
     public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model){
         List<Order> orders;
         log.info("orderSearch.getMemberName() = " + orderSearch.getMemberName());
-        if(orderSearch.getMemberName().length() == 0 && orderSearch.getOrderStatus() == null){
+        if(orderSearch.getMemberName() == null && orderSearch.getOrderStatus() == null){
             orders = orderService.findAll();
             log.info("null orders.toString() = " + orders.toString());
         } else {

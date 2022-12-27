@@ -4,16 +4,22 @@ spring:
       - db
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       properties:
         hibernates:
           show_sql: true # sysout
           format_sql: true
+          use_sql_comments: true
 
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
 logging:
   level:
-    org.hibernate.sql: debug
-    org.hibernate.type: trace # show query parameter
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+#    org.hibernate.sql: debug
+#    org.hibernate.type: trace # show query parameter
