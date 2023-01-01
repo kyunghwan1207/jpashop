@@ -35,6 +35,10 @@ public class OrderSimpleApiController {
         } else {
             orders = orderService.findOrders(orderSearch);
         }
+        for (Order order : orders) {
+            order.getMember().getName();
+            order.getDelivery().getAddress();
+        }
         return orders;
     }
     @GetMapping("/api/v2/simple-orders")
