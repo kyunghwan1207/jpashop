@@ -71,4 +71,8 @@ public class OrderService {
     public List<OrderSimpleQueryDto> finOrderDtos() {
         return orderSimpleQueryRepository.findOrderDtos();
     }
+
+    public List<Order> findAllWithItem() {
+        return orderRepository.findAllWithItem();
+    }
 }
