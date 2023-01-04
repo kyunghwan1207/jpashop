@@ -4,6 +4,9 @@ import com.springstudy.jpashop.domain.Delivery;
 import com.springstudy.jpashop.domain.Member;
 import com.springstudy.jpashop.domain.Order;
 import com.springstudy.jpashop.domain.OrderItem;
+import com.springstudy.jpashop.repository.order.query.OrderFlatDto;
+import com.springstudy.jpashop.repository.order.query.OrderQueryDto;
+import com.springstudy.jpashop.repository.order.query.OrderQueryRepository;
 import com.springstudy.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
 import com.springstudy.jpashop.domain.item.Item;
 import com.springstudy.jpashop.repository.ItemRepository;
@@ -26,6 +29,7 @@ public class OrderService {
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
+    private final OrderQueryRepository orderQueryRepository;
     /**
      * 주문
      */
@@ -78,5 +82,17 @@ public class OrderService {
 
     public List<Order> findAllWithMemberDelivery(int offset, int limit) {
         return orderRepository.findAllWithMemberDelivery(offset, limit);
+    }
+
+    public List<OrderQueryDto> findOrderQueryDtos(){
+        return orderQueryRepository.findOrderQueryDtos();
+    }
+
+    public List<OrderQueryDto> findAllByDto_optimiation() {
+        return orderQueryRepository.findAllByDto_optimization();
+    }
+
+    public List<OrderFlatDto> findAllByDto_flat() {
+        return orderQueryRepository.findAllByDto_flat();
     }
 }

@@ -4,7 +4,7 @@ spring:
       - db
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       properties:
         hibernates:
           show_sql: true # sysout
