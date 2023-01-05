@@ -8,6 +8,7 @@ import com.springstudy.jpashop.repository.order.query.OrderFlatDto;
 import com.springstudy.jpashop.repository.order.query.OrderItemQueryDto;
 import com.springstudy.jpashop.repository.order.query.OrderQueryDto;
 import com.springstudy.jpashop.service.OrderService;
+import com.springstudy.jpashop.service.query.OrderQueryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderApiController {
     private final OrderService orderService;
+    private final OrderQueryService orderQueryService;
 
     @GetMapping("/api/v1/orders")
     public List<Order> ordersV1(){
@@ -52,11 +54,7 @@ public class OrderApiController {
     }
     @GetMapping("/api/v3/orders")
     public List<OrderDto> ordersV3(){
-        List<Order> orders = orderService.findAllWithItem();
-        List<OrderDto> result = orders.stream()
-                .map(o -> new OrderDto(o))
-                .collect(Collectors.toList());
-        return result;
+        return orderQueryService.ordersV3();
     }
 
     @GetMapping("/api/v3.1/orders")
